@@ -67,7 +67,7 @@ def flask_app():
 
 def scheduled_task():
     # 每天 00:00 执行一次 insert() 函数
-    schedule.every().day.at("15:43").do(insert)
+    schedule.every().day.at("23:59").do(insert)
 
     # 循环执行定时任务
     while True:
