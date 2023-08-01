@@ -20,5 +20,11 @@ select * from stars;" -header -column
 
 #### 运行程序
 ```
-python3 main.py
+python3 main.py &
+```
+
+
+#### 测试
+```
+curl http://127.0.0.1:8080
 ```
