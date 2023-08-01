@@ -9,9 +9,6 @@ import requests
 from bs4 import BeautifulSoup
 from flask import Flask
 
-# 创建 Flask 应用
-app = Flask(__name__)
-
 
 def pull():
     try:
@@ -40,6 +37,10 @@ def insert():
         print(f"star: {star}, create_at: {create_time}, 录入完成...")
     except Exception as e:
         print(e)
+
+
+# 创建 Flask 应用
+app = Flask(__name__)
 
 
 @app.route("/", methods=["GET"])
