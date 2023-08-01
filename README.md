@@ -22,7 +22,7 @@ select * from stars;" -header -column
 ```
 python3 main.py > output.log 2>&1 &
 jobs  # 列出后台任务
-fg    # 将其切换到前台，可以通过 Ctrl+C 终止脚本运行。
+fg <n>   # 将任务编号为n的任务切换到前台，可以通过 Ctrl+C 终止脚本运行。
 ```
 
 
