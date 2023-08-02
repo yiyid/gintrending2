@@ -1,10 +1,5 @@
 
 # Quick Start
-#### 安装依赖
-```
-pip3 install -r requirements.txt
-```
-
 
 #### 创建库和表
 ```
@@ -18,12 +13,23 @@ select * from stars;" -header -column
 ```
 
 
-#### 运行程序
+#### 运行 Python 程序
 ```
+pip3 install -r py-gintrending/requirements.txt
 python3 main.py > output.log 2>&1 &
 jobs     # 列出后台任务
 fg <n>   # 将任务编号为n的任务切换到前台，可以通过 Ctrl+C 终止脚本运行。
 ```
+
+
+#### 运行 Go 程序
+```
+cd go-gintrending && go mod tidy && go build -o main main.go
+./main > output.log 2>&1 &
+jobs     # 列出后台任务
+fg <n>   # 将任务编号为n的任务切换到前台，可以通过 Ctrl+C 终止脚本运行。
+```
+
 
 
 #### 测试

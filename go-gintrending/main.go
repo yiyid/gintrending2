@@ -68,8 +68,8 @@ func insert(db string) {
 func setupGinServer() {
 	r := gin.Default()
 
-	// 定义 /ping 接口
-	r.GET("/star", func(c *gin.Context) {
+	// 定义 / 接口
+	r.GET("/", func(c *gin.Context) {
 		db, err := sql.Open("sqlite3", "stars.db")
 		if err != nil {
 			fmt.Println("Error opening database:", err)
