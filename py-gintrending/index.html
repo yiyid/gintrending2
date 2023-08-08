@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>图表示例</title>
+  <!-- 引入ECharts库 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.2.2/echarts.min.js"></script>
+  <!-- 引入jQuery库 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+  <!-- 创建一个容器用于渲染图表 -->
+  <div id="myChart" style="width: 800px; height: 600px;"></div>
+
+  <script>
+    // 从API获取数据的函数
+    function fetchData() {
+      return $.ajax({
+        url: 'http://127.0.0.1:8080/',
+        method: 'GET',
+        dataType: 'json'
+      });
+    }
+
+    // 创建图表的函数
+    async function createChart() {
+      try {
+        const data = await fetchData();
+
+        const dates = data.map(entry => entry.create_at);
+        const starCounts = data.map(entry => parseFloat(entry.star_count));
+
+        // 使用ECharts创建图表
+        const myChart = echarts.init(document.getElementById('myChart'));
+
+        // 设置图表配置
+        const option = {
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross',
+              label: {
+                backgroundColor: '#6a7985'
+              }
+            }
+          },
+          xAxis: {
+            type: 'category',
+            data: dates,
+          },
+          yAxis: {
+            type: 'value',
+            axisLabel: {
+              formatter: '{value}k' // 显示y轴刻度单位为k
+            }
+          },
+          series: [{
+            type: 'line',
+            data: starCounts,
+            label: {
+              show: true,
+              formatter: '{c}k' // 显示数据标签，单位为k
+            },
+          }]
+        };
+
+        // 使用配置项显示图表
+        myChart.setOption(option);
+      } catch (error) {
+        console.error('获取数据时发生错误：', error);
+      }
+    }
+
+    // 在页面加载完成后调用创建图表的函数
+    $(document).ready(createChart);
+  </script>
+</body>
+</html>

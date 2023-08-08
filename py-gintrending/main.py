@@ -8,6 +8,7 @@ import schedule
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask
+from flask_cors import CORS
 
 
 def pull():
@@ -41,6 +42,7 @@ def insert():
 
 # 创建 Flask 应用
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/", methods=["GET"])
@@ -67,7 +69,7 @@ def flask_app():
 
 def scheduled_task():
     # 每天 00:00 执行一次 insert() 函数
-    schedule.every().day.at("23:59").do(insert)
+    schedule.every().day.at("21:25").do(insert)
 
     # 循环执行定时任务
     while True:
