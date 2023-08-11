@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>图表示例</title>
+  <meta charset="UTF-8">
   <!-- 引入ECharts库 -->
   <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.2.2/echarts.min.js"></script>
   <!-- 引入jQuery库 -->
@@ -15,7 +16,7 @@
     // 从API获取数据的函数
     function fetchData() {
       return $.ajax({
-        url: 'http://127.0.0.1:8080/',
+        url: 'http://yidon.link:8080/',
         method: 'GET',
         dataType: 'json'
       });
