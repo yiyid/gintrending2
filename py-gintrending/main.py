@@ -64,7 +64,7 @@ def get_today_star_count():
 
 def flask_app():
     # 启动 Flask 服务器
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=80)
 
 
 def scheduled_task():
